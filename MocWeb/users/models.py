@@ -14,3 +14,10 @@ class UserProfile(AbstractUser):
     address = models.CharField(max_length=100, verbose_name=u"地址", default=u"")
     mobile = models.CharField(max_length=11, null=True, blank=True)
     image = models.ImageField(upload_to="image/%Y/%M", default=u"image/default.png", max_length=100)
+
+    class Meta:
+        verbose_name = u"用户信息"
+        verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return self.username
