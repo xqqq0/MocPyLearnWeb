@@ -21,3 +21,10 @@ class UserProfile(AbstractUser):
 
     def __unicode__(self):
         return self.username
+
+
+class EmailVerifyRecode(models.Model):
+    code = models.CharField(max_length=20, verbose_name=u"验证码")
+    email = models.EmailField(max_length=100, verbose_name=u"邮箱")
+    send_type = models.CharField(choices=(("register", u"注册"), ("forget", u"忘记密码")), max_length=10)
+    send_time = models.DateTimeField()
